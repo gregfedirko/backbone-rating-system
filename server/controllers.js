@@ -38,4 +38,18 @@ exports.createRestaraunt = function(req, res) {
     res.end('{"success" : "Created Successfully", "status" : 200}');
     
   });
-}
+};
+
+exports.deleteRestaraunt = function(req, res) {
+  Restaraunt.findOneAndRemove({_id: req.params.id}, function(err, item) {
+    res.end('{"success" : "Deleted Successfully", "status" : 200}');
+  });
+};
+
+
+
+
+
+
+
+

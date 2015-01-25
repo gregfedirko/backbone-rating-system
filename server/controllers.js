@@ -4,18 +4,30 @@ var Restaraunt = mongoose.model('Restaraunt');
 
 exports.getRestaraunts = function(req, res) {
   Restaraunt.find({}).exec(function(err, collection) {
+    if (err) {
+      handleError(err, res);
+      return;
+    }
     res.json(collection);
   });
 };
 
 exports.getRestaraunt = function(req, res) {
-  Restaraunt.findOne({_id: req.params.id}, function(error, item) {
+  Restaraunt.findOne({_id: req.params.id}, function(err, item) {
+    if (err) {
+      handleError(err, res);
+      return;
+    }
     res.json(item);
   });
 };
 
 exports.updateRestaraunt = function(req, res) {
-  Restaraunt.findOne({_id: req.params.id}, function(error, item) {
+  Restaraunt.findOne({_id: req.params.id}, function(err, item) {
+    if (err) {
+      handleError(err, res);
+      return;
+    }
     item.name = req.body.name;
     item.description = req.body.description;
     item.save(function(err, data) {
@@ -30,11 +42,9 @@ exports.createRestaraunt = function(req, res) {
     description: req.body.description
   }, function(err, restaraunt) {
     if (err) {
-      console.log(err);
-      res.status(404);
-      res.end();
+      handleError(err, res);
       return;
-    } 
+    }
     res.end('{"success" : "Created Successfully", "status" : 200}');
     
   });
@@ -42,6 +52,10 @@ exports.createRestaraunt = function(req, res) {
 
 exports.deleteRestaraunt = function(req, res) {
   Restaraunt.findOneAndRemove({_id: req.params.id}, function(err, item) {
+    if (err) {
+      handleError(err, res);
+      return;
+    }
     res.end('{"success" : "Deleted Successfully", "status" : 200}');
   });
 };
@@ -49,13 +63,13 @@ exports.deleteRestaraunt = function(req, res) {
 exports.addComment = function(req, res) {
   Restaraunt.findOne({_id: req.body.restarauntID}, function(err, item) {
     if (err) {
-      console.log(err);
+      handleError(err, res);
+      return;
     }
-    console.log(item);
     var normalizedRating = Number(item.rating)
     if ( (typeof normalizedRating !== "number") || (normalizedRating < 1) || (normalizedRating > 5)) {
-      res.status(404);
-      res.end();
+      var err = new Error('Invalid rating');
+      handleError(err, res);
       return;
     } 
 
@@ -80,6 +94,12 @@ exports.addComment = function(req, res) {
   });
 }
 
+
+function handleError(err, res) {
+  console.log(err);
+  res.status(404);
+  res.end();
+}
 
 
 

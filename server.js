@@ -7,7 +7,7 @@ app.use(express.static('public'));
 
 require('./server/mongoose');
 
-require('./server/route')(app);
+require('./server/router')(app);
 
 
 var port = process.env.PORT || 3030;

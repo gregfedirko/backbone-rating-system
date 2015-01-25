@@ -3,6 +3,7 @@ var App = {
 
     App.restarauntListView = new App.RestarauntListView();
     App.editRestarauntView = new App.EditRestarauntView();
+    App.restarauntDetailView = new App.RestarauntDetailView();
 
     // router: 
     App.router = new App.Router();
@@ -11,6 +12,9 @@ var App = {
     });
     App.router.on('route:editRestaraunt', function(id) {
       App.editRestarauntView.render({id:id});
+    });
+    App.router.on('route:detailRestaraunt', function(id) {
+      App.restarauntDetailView.render({id:id});
     });
 
   }, 
@@ -24,7 +28,8 @@ App.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'new': 'editRestaraunt',
-    'edit/:id': 'editRestaraunt'
+    'edit/:id': 'editRestaraunt',
+    'detail/:id': 'detailRestaraunt'
   }
 });
 

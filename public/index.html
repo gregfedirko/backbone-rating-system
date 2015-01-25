@@ -32,6 +32,9 @@
   <script type="text/javascript" src="app/models/Restaraunts.js"></script>
   <script type="text/javascript" src="app/views/RestarauntListView.js"></script>
   <script type="text/javascript" src="app/views/EditRestarauntView.js"></script>
+  <script type="text/javascript" src="app/views/RestarauntDetailView.js"></script>
+  <script type="text/javascript" src="app/views/CommentView.js"></script>
+  <script type="text/javascript" src="app/views/CommentFormView.js"></script>
 
   <!-- TEMPLATES -->
 
@@ -77,6 +80,61 @@
           <button class="btn btn-danger delete">Delete</button>
           <% %>
         </form>
+      </script>
+
+    <!-- Detail Restaraunt -->
+
+      <script type="text/template" id="detail-view">
+        <h3><span class="alert alert-warning"><%= (restaraunt.get('score') > -1) ? restaraunt.get('score') : 'NA' %></span>   <%= restaraunt.get('name')%> </h3>
+        <hr>
+
+        <p><%= restaraunt.get('description')%></p>
+
+        <h3>Reviews</h3>
+        <hr>
+      </script>
+
+    <!-- Comment Form -->
+      <script type="text/template" id="comment-form-view">
+        <div class="well">
+
+            <form class="comment-form">
+              <legend>Write a Review</legend>
+              <div class="form-group">
+                <label>Author</label>
+                <input class="form-control" name="author">
+              </div>
+              <div class="form-group">
+                <label>Rating</label>
+                <select class="form-control" name="rating">
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Comment</label>
+                <textarea class="form-control" rows="3" name="comment"></textarea>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+        </div>
+      </script>
+
+    <!-- Comment -->
+
+      <script type="text/template" id="review-item">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4><span class="alert alert-warning"><%= review.rating%></span>   <%= review.author%>, <%= review.createdAt%></h4>
+          <hr>
+          <p><%= review.comment%></p>
+        </div>
+      </div>
       </script>
 
   <!-- Start the App -->

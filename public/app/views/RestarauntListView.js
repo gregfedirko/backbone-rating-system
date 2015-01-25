@@ -6,7 +6,6 @@ App.RestarauntListView = Backbone.View.extend({
     restaraunts.fetch({
       success: function(data) {
         var template = _.template($('#restaraunt-list').html());
-        console.log(data.models);
         that.$el.html(template({data: data.models}));
       }
     });

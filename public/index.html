@@ -31,12 +31,7 @@
   <script type="text/javascript" src="app/app.js"></script>
   <script type="text/javascript" src="app/models/Restaraunts.js"></script>
   <script type="text/javascript" src="app/views/RestarauntListView.js"></script>
-
-  <script type="text/javascript">
-    App.start();
-  </script>
-
-
+  <script type="text/javascript" src="app/views/EditRestarauntView.js"></script>
 
   <!-- TEMPLATES -->
 
@@ -62,6 +57,32 @@
 
         </table>
       </script>
+
+    <!-- Edit/New Restaraunt -->
+
+      <script type="text/template" id="edit-restaraunt">
+        <form class="edit-restaraunt-form">
+          <legend><%= restaraunt ? 'Edit' : 'Create' %> Restaraunt</legend>
+          <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" name="name" value="<%= restaraunt ? restaraunt.get('name') : '' %>">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="3" name="description"><%= restaraunt ? restaraunt.get('description') : '' %></textarea>
+          </div>
+          <button type="submit" class="btn btn-default"><%= restaraunt ? 'Update' : 'Create' %></button>
+          <% if(restaraunt)%>
+          <input type="hidden" name= "id" value="<%= restaraunt ? restaraunt.id : '' %>">
+          <button class="btn btn-danger delete">Delete</button>
+          <% %>
+        </form>
+      </script>
+
+  <!-- Start the App -->
+  <script type="text/javascript">
+    App.start();
+  </script>
 
 </body>
 </html>

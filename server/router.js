@@ -7,4 +7,7 @@ module.exports = function(app) {
   app.put('/api/restaraunts/:id', controllers.updateRestaraunt);
   app.post('/api/restaraunts', controllers.createRestaraunt);
   app.delete('/api/restaraunts/:id', controllers.deleteRestaraunt);
+
+  //Comments
+  app.post('/api/comments', controllers.addComment);
 };

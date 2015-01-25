@@ -46,6 +46,40 @@ exports.deleteRestaraunt = function(req, res) {
   });
 };
 
+exports.addComment = function(req, res) {
+  Restaraunt.findOne({_id: req.body.restarauntID}, function(err, item) {
+    if (err) {
+      console.log(err);
+    }
+    console.log(item);
+    var normalizedRating = Number(item.rating)
+    if ( (typeof normalizedRating !== "number") || (normalizedRating < 1) || (normalizedRating > 5)) {
+      res.status(404);
+      res.end();
+      return;
+    } 
+
+    item.reviews.push({
+      author: req.body.author, 
+      body: req.body.comment,
+      rating: req.body.rating
+    });
+
+    var reviewSum = 0;
+    var reviewCount = 0;
+    for (var i = 0; i < item.reviews.length; i++) {
+      reviewSum += item.reviews[i].rating;
+      reviewCount++;
+    }
+
+    item.score = (reviewCount > 0) ? (reviewSum/reviewCount).toFixed(1) : 0;
+
+    item.save(function(err) {
+      res.end();
+    });
+  });
+}
+
 
 
 

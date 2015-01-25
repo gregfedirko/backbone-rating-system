@@ -1,27 +1,30 @@
 #Backbone Rating System
 
 Frontend: 
-Backbone
-Bootstrap
+*Backbone
+*Bootstrap
 
 Backend: 
-Express
-Mongoose
+*Express
+*Mongoose
 
 Testing:
-Supertest
-Mocha
-Chai
+*Supertest
+*Mocha
+*Chai
 
 ###To Run: 
 Start mongo:
 ```
 mongod
 ```
-
+Install dependencies:
 ```
 npm install
 bower install
+```
+Run the app:
+```
 npm start
 ```
 
@@ -29,5 +32,5 @@ npm start
 ```
 npm test
 ```
-
+ 
 

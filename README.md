@@ -1,17 +1,14 @@
 #Backbone Rating System
 
 Frontend: 
-
 * Backbone
 * Bootstrap
 
 Backend: 
-
 * Express
 * Mongoose
 
 Testing:
-
 * Supertest
 * Mocha
 * Chai

@@ -1,12 +1,12 @@
 var controllers = require('./controllers');
 module.exports = function(app) {
 
-  // Restaraunts
-  app.get('/api/restaraunts', controllers.getRestaraunts);
-  app.get('/api/restaraunts/:id', controllers.getRestaraunt);
-  app.put('/api/restaraunts/:id', controllers.updateRestaraunt);
-  app.post('/api/restaraunts', controllers.createRestaraunt);
-  app.delete('/api/restaraunts/:id', controllers.deleteRestaraunt);
+  // Restaurants
+  app.get('/api/restaurants', controllers.getRestaurants);
+  app.get('/api/restaurants/:id', controllers.getRestaurant);
+  app.put('/api/restaurants/:id', controllers.updateRestaurant);
+  app.post('/api/restaurants', controllers.createRestaurant);
+  app.delete('/api/restaurants/:id', controllers.deleteRestaurant);
 
   //Comments
   app.post('/api/comments', controllers.addComment);

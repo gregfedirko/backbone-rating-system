@@ -29,18 +29,18 @@
   <script type="text/javascript" src="vendor/backbone/backbone.js"></script>
   
   <script type="text/javascript" src="app/app.js"></script>
-  <script type="text/javascript" src="app/models/Restaraunts.js"></script>
-  <script type="text/javascript" src="app/views/RestarauntListView.js"></script>
-  <script type="text/javascript" src="app/views/EditRestarauntView.js"></script>
-  <script type="text/javascript" src="app/views/RestarauntDetailView.js"></script>
+  <script type="text/javascript" src="app/models/Restaurants.js"></script>
+  <script type="text/javascript" src="app/views/RestaurantListView.js"></script>
+  <script type="text/javascript" src="app/views/EditRestaurantView.js"></script>
+  <script type="text/javascript" src="app/views/RestaurantDetailView.js"></script>
   <script type="text/javascript" src="app/views/CommentView.js"></script>
   <script type="text/javascript" src="app/views/CommentFormView.js"></script>
 
   <!-- TEMPLATES -->
 
-    <!-- Restaraunt List View  -->
+    <!-- Restaurant List View  -->
 
-      <script type="text/template" id="restaraunt-list">
+      <script type="text/template" id="restaurant-list">
         <table class="table table-striped" >
           <thead>
             <th>Name</th>
@@ -61,34 +61,34 @@
         </table>
       </script>
 
-    <!-- Edit/New Restaraunt -->
+    <!-- Edit/New Restaurant -->
 
-      <script type="text/template" id="edit-restaraunt">
-        <form class="edit-restaraunt-form">
-          <legend><%= restaraunt ? 'Edit' : 'Create' %> Restaraunt</legend>
+      <script type="text/template" id="edit-restaurant">
+        <form class="edit-restaurant-form">
+          <legend><%= restaurant ? 'Edit' : 'Create' %> Restaurant</legend>
           <div class="form-group">
             <label>Name</label>
-            <input class="form-control" name="name" value="<%= restaraunt ? restaraunt.get('name') : '' %>">
+            <input class="form-control" name="name" value="<%= restaurant ? restaurant.get('name') : '' %>">
           </div>
           <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control" rows="3" name="description"><%= restaraunt ? restaraunt.get('description') : '' %></textarea>
+            <textarea class="form-control" rows="3" name="description"><%= restaurant ? restaurant.get('description') : '' %></textarea>
           </div>
-          <button type="submit" class="btn btn-default"><%= restaraunt ? 'Update' : 'Create' %></button>
-          <% if(restaraunt)%>
-          <input type="hidden" name= "id" value="<%= restaraunt ? restaraunt.id : '' %>">
+          <button type="submit" class="btn btn-default"><%= restaurant ? 'Update' : 'Create' %></button>
+          <% if(restaurant)%>
+          <input type="hidden" name= "id" value="<%= restaurant ? restaurant.id : '' %>">
           <button class="btn btn-danger delete">Delete</button>
           <% %>
         </form>
       </script>
 
-    <!-- Detail Restaraunt -->
+    <!-- Detail Restaurant -->
 
       <script type="text/template" id="detail-view">
-        <h3><span class="alert alert-warning"><%= (restaraunt.get('score') > -1) ? restaraunt.get('score') : 'NA' %></span>   <%= restaraunt.get('name')%> </h3>
+        <h3><span class="alert alert-warning"><%= (restaurant.get('score') > -1) ? restaurant.get('score') : 'NA' %></span>   <%= restaurant.get('name')%> </h3>
         <hr>
 
-        <p><%= restaraunt.get('description')%></p>
+        <p><%= restaurant.get('description')%></p>
 
         <h3>Reviews</h3>
         <hr>

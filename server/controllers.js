@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
-var Restaraunt = mongoose.model('Restaraunt');
+var Restaurant = mongoose.model('Restaurant');
 
 
-exports.getRestaraunts = function(req, res) {
-  Restaraunt.find({}).exec(function(err, collection) {
+exports.getRestaurants = function(req, res) {
+  Restaurant.find({}).exec(function(err, collection) {
     if (err) {
       handleError(err, res);
       return;
@@ -12,8 +12,8 @@ exports.getRestaraunts = function(req, res) {
   });
 };
 
-exports.getRestaraunt = function(req, res) {
-  Restaraunt.findOne({_id: req.params.id}, function(err, item) {
+exports.getRestaurant = function(req, res) {
+  Restaurant.findOne({_id: req.params.id}, function(err, item) {
     if (err) {
       handleError(err, res);
       return;
@@ -22,8 +22,8 @@ exports.getRestaraunt = function(req, res) {
   });
 };
 
-exports.updateRestaraunt = function(req, res) {
-  Restaraunt.findOne({_id: req.params.id}, function(err, item) {
+exports.updateRestaurant = function(req, res) {
+  Restaurant.findOne({_id: req.params.id}, function(err, item) {
     if (err) {
       handleError(err, res);
       return;
@@ -36,11 +36,11 @@ exports.updateRestaraunt = function(req, res) {
   });
 };
 
-exports.createRestaraunt = function(req, res) {
-  Restaraunt.create({
+exports.createRestaurant = function(req, res) {
+  Restaurant.create({
     name: req.body.name,
     description: req.body.description
-  }, function(err, restaraunt) {
+  }, function(err, restaurant) {
     if (err) {
       handleError(err, res);
       return;
@@ -50,8 +50,8 @@ exports.createRestaraunt = function(req, res) {
   });
 };
 
-exports.deleteRestaraunt = function(req, res) {
-  Restaraunt.findOneAndRemove({_id: req.params.id}, function(err, item) {
+exports.deleteRestaurant = function(req, res) {
+  Restaurant.findOneAndRemove({_id: req.params.id}, function(err, item) {
     if (err) {
       handleError(err, res);
       return;
@@ -61,7 +61,7 @@ exports.deleteRestaraunt = function(req, res) {
 };
 
 exports.addComment = function(req, res) {
-  Restaraunt.findOne({_id: req.body.restarauntID}, function(err, item) {
+  Restaurant.findOne({_id: req.body.restaurantID}, function(err, item) {
     if (err) {
       handleError(err, res);
       return;

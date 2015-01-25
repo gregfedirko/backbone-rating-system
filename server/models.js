@@ -7,7 +7,7 @@ var Review = mongoose.Schema({
   date: {type: Date, default: Date.now()},
 });
 
-var restarauntSchema = mongoose.Schema({
+var restaurantSchema = mongoose.Schema({
   name: {type: String, unique: true},
   description: String,
   // default to -1: once a review is submitted it can be reset to 1-5
@@ -15,4 +15,4 @@ var restarauntSchema = mongoose.Schema({
   reviews: [Review]
 });
 
-mongoose.model('Restaraunt', restarauntSchema);
+mongoose.model('Restaurant', restaurantSchema);

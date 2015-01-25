@@ -15,29 +15,29 @@ module.exports = function(config) {
   require('./models');
 
   // Seed Database(if empty): 
-  var Restaraunt = mongoose.model('Restaraunt');
+  var Restaurant = mongoose.model('Restaurant');
   seedDB();
 
   function seedDB() {
-    Restaraunt.find({}).exec(function(err, collection) {
+    Restaurant.find({}).exec(function(err, collection) {
       if (err) {console.log(err);}
       if (collection.length === 0) {
         var seedData = [
           {
             name: 'Chipotle',
-            description: 'A restaraunt'
+            description: 'A restaurant'
           },
           {
             name: 'Burger King',
-            description: 'A restaraunt'
+            description: 'A restaurant'
           },
           {
             name: 'Pf Changs',
-            description: 'A restaraunt'
+            description: 'A restaurant'
           }
         ];
         for (var i = 0; i < seedData.length; i++) {
-          if (Restaraunt.create(seedData[i]));
+          if (Restaurant.create(seedData[i]));
         }
       }
     });

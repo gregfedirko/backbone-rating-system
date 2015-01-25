@@ -1,17 +1,19 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 
 var app = express();
+
+var config = require('./server/config')[env];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var config = require('./server/config')[env];
 
 require('./server/mongoose')(config);
 
@@ -23,3 +25,5 @@ var port = process.env.PORT || 3030;
 
 app.listen(port);
 console.log('listening on port...' + port);
+
+module.exports.getApp = app;

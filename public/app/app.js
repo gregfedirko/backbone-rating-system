@@ -1,20 +1,20 @@
 var App = {
   init: function() {
 
-    App.restarauntListView = new App.RestarauntListView();
-    App.editRestarauntView = new App.EditRestarauntView();
-    App.restarauntDetailView = new App.RestarauntDetailView();
+    App.restaurantListView = new App.RestaurantListView();
+    App.editRestaurantView = new App.EditRestaurantView();
+    App.restaurantDetailView = new App.RestaurantDetailView();
 
     // router: 
     App.router = new App.Router();
     App.router.on('route:home', function() {
-      App.restarauntListView.render();
+      App.restaurantListView.render();
     });
-    App.router.on('route:editRestaraunt', function(id) {
-      App.editRestarauntView.render({id:id});
+    App.router.on('route:editRestaurant', function(id) {
+      App.editRestaurantView.render({id:id});
     });
-    App.router.on('route:detailRestaraunt', function(id) {
-      App.restarauntDetailView.render({id:id});
+    App.router.on('route:detailRestaurant', function(id) {
+      App.restaurantDetailView.render({id:id});
     });
 
   }, 
@@ -27,9 +27,9 @@ var App = {
 App.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'new': 'editRestaraunt',
-    'edit/:id': 'editRestaraunt',
-    'detail/:id': 'detailRestaraunt'
+    'new': 'editRestaurant',
+    'edit/:id': 'editRestaurant',
+    'detail/:id': 'detailRestaurant'
   }
 });
 

@@ -23,3 +23,19 @@ exports.updateRestaraunt = function(req, res) {
     })
   });
 };
+
+exports.createRestaraunt = function(req, res) {
+  Restaraunt.create({
+    name: req.body.name,
+    description: req.body.description
+  }, function(err, restaraunt) {
+    if (err) {
+      console.log(err);
+      res.status(404);
+      res.end();
+      return;
+    } 
+    res.end('{"success" : "Created Successfully", "status" : 200}');
+    
+  });
+}

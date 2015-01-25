@@ -4,9 +4,10 @@ var app = express();
 
 
 app.use(express.static('public'));
-app.get('*', function(req, res) {
-  res.send('public/index.html');
-});
+
+require('./server/mongoose');
+
+require('./server/route')(app);
 
 
 var port = process.env.PORT || 3030;

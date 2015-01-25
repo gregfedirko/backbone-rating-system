@@ -1,8 +1,67 @@
 <!doctype html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
-  <h1>Test</h1>
+  <!-- Navigation Bar -->
+  <div class="page-nav">
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Rating System</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#/new">New</a></li>
+          </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Backbone Entry Point -->
+  <div class="container">
+    <div class="page"></div>
+  </div>
+
+  <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="vendor/underscore/underscore.js"></script>
+  <script type="text/javascript" src="vendor/backbone/backbone.js"></script>
+  
+  <script type="text/javascript" src="app/app.js"></script>
+  <script type="text/javascript" src="app/models/Restaraunts.js"></script>
+  <script type="text/javascript" src="app/views/RestarauntListView.js"></script>
+
+  <script type="text/javascript">
+    App.start();
+  </script>
+
+
+
+  <!-- TEMPLATES -->
+
+    <!-- Restaraunt List View  -->
+
+      <script type="text/template" id="restaraunt-list">
+        <table class="table table-striped" >
+          <thead>
+            <th>Name</th>
+            <th>Rating</th>
+            <th></th>
+          </thead>
+
+          <tbody>
+          <% _.each(data, function(item) { %>
+            <tr>
+              <td><a href="#/detail/<%= item.get('_id') %>"><%= item.get('name') %></a></td>
+              <td><%= (item.get('score') > -1) ? item.get('score') : '' %></td>
+              <td><a href="#/edit/<%= item.get('_id') %>" class="btn btn-default">Edit</a></td>
+            </tr>
+          <% }); %>
+          </tbody>
+
+        </table>
+      </script>
+
 </body>
 </html>

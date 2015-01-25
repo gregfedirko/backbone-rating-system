@@ -3,12 +3,12 @@ var app = express();
 
 
 
-app.use(express.static('public'));
 
 require('./server/mongoose');
 
 require('./server/router')(app);
 
+app.use(express.static('public'));
 
 var port = process.env.PORT || 3030;
 

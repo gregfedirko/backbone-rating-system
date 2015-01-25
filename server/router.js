@@ -7,10 +7,4 @@ module.exports = function(app) {
   app.put('/api/restaraunts/:id', controllers.updateRestaraunt);
   app.post('/api/restaraunts', controllers.createRestaraunt);
   app.delete('/api/restaraunts', controllers.deleteRestaraunt);
-
-
-  // Serve up index.html as a default 
-  app.get('*', function(req, res) {
-    res.send('/public/index.html');
-  });
 };
